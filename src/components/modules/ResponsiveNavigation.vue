@@ -14,7 +14,11 @@
 
       <ul class="nav-group">
         <li class="nav-item"><a class="nav-link" href="#">Philosophie</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Réserver</a></li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{name: 'reservation'}">
+            Réservation
+          </router-link>
+        </li>
       </ul>
 
       <ul class="nav-group">

@@ -12,6 +12,12 @@ export default new VueRouter({
       default: () => ({ component: import('../components/pages/Homepage.vue') })
     }
   }, {
+    path: '/reservation',
+    name: 'reservation',
+    components: {
+      default: () => ({ component: import('../components/pages/Reservation.vue') })
+    }
+  }, {
     path: '*',
     redirect: '/'
   }]
