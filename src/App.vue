@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <responsive-navigation></responsive-navigation>
+      <navigation></navigation>
     </header>
     <main>
       <transition name="page-load" mode="out-in" appear>
@@ -12,10 +12,10 @@
 </template>
 
 <script>
-  import ResponsiveNavigation from './components/modules/ResponsiveNavigation.vue';
+  import Navigation from './components/Navigation.vue';
 
   export default {
-    components: { ResponsiveNavigation }
+    components: { Navigation }
   };
 </script>
 

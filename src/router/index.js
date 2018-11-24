@@ -9,13 +9,13 @@ export default new VueRouter({
     path: '/',
     name: 'homepage',
     components: {
-      default: () => ({ component: import('../components/pages/Homepage.vue') })
+      default: () => ({ component: import('../pages/Homepage.vue') })
     }
   }, {
     path: '/reservation',
     name: 'reservation',
     components: {
-      default: () => ({ component: import('../components/pages/Reservation.vue') })
+      default: () => ({ component: import('../pages/Reservation.vue') })
     }
   }, {
     path: '*',
