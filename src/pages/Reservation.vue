@@ -1,16 +1,13 @@
 <template>
   <div class="reservation">
-    <h2>Réservation</h2>
-    <select>
-      <option value="Bruz">Bruz</option>
-      <option value="Rennes">Rennes</option>
-    </select>
-    <section class="map"></section>
+    <mapbox></mapbox>
   </div>
 </template>
 
 <script>
-  export default {
+  import Mapbox from '../components/Mapbox.vue'
 
+  export default {
+    components: { Mapbox }
   }
 </script>
