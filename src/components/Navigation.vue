@@ -1,5 +1,5 @@
 <template>
-  <nav class="responsive-nav no-highlight">
+  <nav class="responsive-nav no-highlight" v-if="this.$auth.ready()">
     <div @click="toggle" class="nav-toggle" :class="opened ? 'active' : ''">Menu</div>
 
     <div @click="close" class="nav-container" :class="opened ? 'opened' : 'closed'">
@@ -13,17 +13,21 @@
       </ul>
 
       <ul class="nav-group">
-        <li class="nav-item"><a class="nav-link" href="#">Philosophie</a></li>
         <li class="nav-item">
-          <router-link class="nav-link" :to="{name: 'reservation'}">
-            Réservation
-          </router-link>
+          <router-link class="nav-link" :to="{name: 'reservation'}">Réservation</router-link>
         </li>
       </ul>
 
-      <ul class="nav-group">
-        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Classement</a></li>
+      <ul class="nav-group" v-if="this.$auth.check()">
+        <li class="nav-item"><a class="nav-link" href="#">Profil ({{ this.$auth.user().email }})</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout" @click.prevent="logout">Se déconnecter</a></li>
+      </ul>
+      <ul class="nav-group" v-else>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{name: 'login'}">Connexion</router-link>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#">Inscription</a></li>
       </ul>
 
     </div>
@@ -32,8 +36,6 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     data () {
       return {
@@ -50,9 +52,8 @@
         }
       },
       logout () {
-        this.$store.dispatch('logout').then(() => {
-          this.$toast.show('À bientôt !', 'Déconnexion réussie')
-        })
+        this.$auth.logout()
+        this.$toast.show('À bientôt !', 'Déconnexion réussie')
       }
     },
     mounted () {

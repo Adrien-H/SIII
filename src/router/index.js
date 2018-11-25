@@ -3,13 +3,19 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: [{
     path: '/',
     name: 'homepage',
     components: {
       default: () => ({ component: import('../pages/Homepage.vue') })
+    }
+  }, {
+    path: '/login',
+    name: 'login',
+    components: {
+      default: resolve => require(['../pages/Login.vue'], resolve)
     }
   }, {
     path: '/reservation',
@@ -22,3 +28,7 @@ export default new VueRouter({
     redirect: '/'
   }]
 })
+
+Vue.router = router
+
+export default router
