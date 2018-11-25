@@ -7,27 +7,47 @@
       <ul class="nav-group">
         <li class="nav-item">
           <router-link class="nav-link" :to="{name: 'homepage'}">
-            Page d'accueil
+            {{ $t('navigation.homepage') }}
           </router-link>
         </li>
       </ul>
 
       <ul class="nav-group">
         <li class="nav-item">
-          <router-link class="nav-link" :to="{name: 'reservation'}">Réservation</router-link>
+          <router-link class="nav-link" :to="{name: 'reservation'}">
+            {{ $t('navigation.reservation') }}
+          </router-link>
         </li>
       </ul>
 
       <ul class="nav-group" v-if="this.$auth.check()">
-        <li class="nav-item"><a class="nav-link" href="#">Profil ({{ this.$auth.user().email }})</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
-        <li class="nav-item"><a class="nav-link" href="/logout" @click.prevent="logout">Se déconnecter</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            {{ $t('navigation.profile') }} ({{ this.$auth.user().email }})
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            {{ $t('navigation.messages') }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout" @click.prevent="logout">
+            {{ $t('navigation.logout') }}
+          </a>
+        </li>
       </ul>
       <ul class="nav-group" v-else>
         <li class="nav-item">
-          <router-link class="nav-link" :to="{name: 'login'}">Connexion</router-link>
+          <router-link class="nav-link" :to="{name: 'login'}">
+            {{ $t('navigation.login') }}
+          </router-link>
         </li>
-        <li class="nav-item"><a class="nav-link" href="#">Inscription</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            {{ $t('navigation.register') }}
+          </a>
+        </li>
       </ul>
 
     </div>
